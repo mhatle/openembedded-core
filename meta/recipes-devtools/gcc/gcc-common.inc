@@ -135,3 +135,7 @@ remove_sysroot_paths_from_checksum_options () {
 	sed -i 's@${DEBUG_PREFIX_MAP}@@g' ${B}/gcc/checksum-options
 	sed -i 's@${1}@/host@g' ${B}/gcc/checksum-options
 }
+
+cleanup_installed_include_fixed () {
+	find ${D}${libdir}/gcc/${TARGET_SYS}/${BINV}/include-fixed -type f -not -name "README" -not -name limits.h -not -name syslimits.h | xargs rm -f
+}
