@@ -64,9 +64,6 @@ do_configure () {
 }
 
 do_compile () {
-	remove_sysroot_paths_from_configargs
-	remove_sysroot_paths_from_checksum_options '${STAGING_DIR_HOST}'
-
 	oe_runmake all-host configure-target-libgcc
 	(cd ${B}/${TARGET_SYS}/libgcc; oe_runmake enable-execute-stack.c unwind.h md-unwind-support.h sfp-machine.h gthr-default.h)
 }
@@ -175,8 +172,6 @@ do_install () {
 			done
 		done
 	done
-
-	cleanup_installed_include_fixed
 }
 
 ELFUTILS = "nativesdk-elfutils"

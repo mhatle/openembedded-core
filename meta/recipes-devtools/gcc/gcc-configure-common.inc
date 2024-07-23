@@ -119,3 +119,4 @@ do_configure () {
 
 	oe_runconf
 }
+
